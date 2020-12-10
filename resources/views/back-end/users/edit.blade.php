@@ -35,6 +35,7 @@ $pageDesc = 'you can edit user from here';
                     @method('PUT')
                     @include('back-end.users.form')
                     <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{ route('users.index') }}" class="btn btn-primary ml-3">All User</a>
                 </form>
             </div>
 

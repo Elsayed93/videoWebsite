@@ -24,6 +24,14 @@ $pageDesc = 'you can add, edit and delete user from here';
             color: #8b92a9 !important;
         }
 
+        form {
+            display: inline-block;
+        }
+        form button{
+            border-style: none;
+            cursor: pointer;
+        }
+
     </style>
 @endpush
 
@@ -64,7 +72,11 @@ $pageDesc = 'you can add, edit and delete user from here';
                     <td>{{ $user->email }}</td>
                     <td>
                         <a href="{{ route('users.edit', $user->id) }}"><i class="far fa-edit fa-lg mr-2"></i></a>
-                        <a href="#"><i class="fas fa-trash-alt fa-lg mr-2"></i></a>
+                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit"><i class="fas fa-trash-alt fa-lg mr-2"></i></button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -56,10 +56,17 @@ class usersController extends BackEndController
         }
 
         $user->update($reqArray);
-        return redirect()->route('users.index');
+        return redirect()->route('users.edit', $user->id);;
     }
 
-    public function delete($id)
+   
+
+    public function destroy($id)
     {
+        User::findorfail($id)->delete();
+        return redirect()->route('users.index');
+
     }
+
+    
 }
