@@ -1,4 +1,5 @@
 # videoWebsite
 ### make by ITI Team students
-It is a website showing videos.
+<p> It is a website showing videos. <br>
 Tools were used: LARAVEL - BootStrap - jQuery.
+</p>
