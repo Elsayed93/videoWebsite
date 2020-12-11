@@ -1,10 +1,5 @@
 @extends('back-end.layout.app')
 
-@php
-$pageTitle = 'users home page';
-$pageDesc = 'you can add, edit and delete user from here';
-@endphp
-
 @section('title')
     {{ $pageTitle }}
 @endsection
@@ -27,7 +22,8 @@ $pageDesc = 'you can add, edit and delete user from here';
         form {
             display: inline-block;
         }
-        form button{
+
+        form button {
             border-style: none;
             cursor: pointer;
         }
@@ -43,7 +39,7 @@ $pageDesc = 'you can add, edit and delete user from here';
         <div class="row">
             <div class="col-8">
                 <div class="card-body" style="color: white;">
-                    <h3 class="card-title" style="color: white;">Users index</h3>
+                    <h3 class="card-title" style="color: white;">{{ $modelName }} index</h3>
                     <p class="card-text">
                         {{ $pageDesc }}
                     </p>
@@ -51,7 +47,7 @@ $pageDesc = 'you can add, edit and delete user from here';
             </div>
 
             <div class="col-4 d-flex align-items-center">
-                <a class="btn btn-primary" href="{{ route('users.create') }}" role="button">Add User</a>
+                <a class="btn btn-primary" href="{{ route('users.create') }}" role="button">Add {{ $singleModelName }}</a>
             </div>
         </div>
     </div>
@@ -71,16 +67,19 @@ $pageDesc = 'you can add, edit and delete user from here';
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a href="{{ route('users.edit', $user->id) }}"><i class="far fa-edit fa-lg mr-2"></i></a>
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                        <a href="{{ route('users.edit', $user) }}"><i rel='tooltip' class="far fa-edit fa-lg mr-2"
+                                data-original-title="Edit {{$singleModelName}}"></i></a>
+                        <form action="{{ route('users.destroy', $user) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit"><i class="fas fa-trash-alt fa-lg mr-2"></i></button>
+                            <button type="submit"><i rel='tooltip' class="fas fa-trash-alt fa-lg mr-2"
+                                    data-original-title="Remove {{$singleModelName}}"></i></button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    {!! $users->links() !!}
 
 @endsection

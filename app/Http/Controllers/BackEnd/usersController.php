@@ -4,8 +4,9 @@ namespace App\Http\Controllers\BackEnd;
 
 use App\Models\User;
 // use GuzzleHttp\Psr7\Request;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\BackEnd\Users\Store;
+use App\Http\Requests\BackEnd\Users\Update;
 
 class usersController extends BackEndController
 {
@@ -15,32 +16,39 @@ class usersController extends BackEndController
         parent::__construct($model);
     }
 
-    public function store(Request $request)
+    // protected function filter($rows)
+    // {
+    //     if (request()->has('name') && request()->get('name') != '') {
+    //         $rows = $rows->where('name', request()->get('name'));
+    //     }
+    //     if (request()->has('email') && request()->get('email') != '') {
+    //         $rows = $rows->where('email', request()->get('email'));
+    //     }
+
+    //     return $rows;
+    // }
+
+    public function store(Store $request)
     {
-        // dd($request->all());
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $reqArray = $request->all();
+        $reqArray['password'] = Hash::make($request->password);
+        $this->model->create($reqArray);
 
         return redirect()->route('users.index');
     }
 
-    public function update($id, Request $request)
+    public function update($id, Update $request)
     {
-        $user = User::findorfail($id);
-        $reqArray = [
-            'name' => $request->name,
-            'email' => $request->email,
-        ];
+        $user = $this->model->findorfail($id);
+        $reqArray = $request->all();
 
-        if (request()->has('password') && request()->get('password') != '') {
-            $reqArray += ['password' => Hash::make($request->password)];
+        if (isset($reqArray['password']) && $reqArray['password'] != '') {
+            $reqArray['password'] = Hash::make($request->password);
+        }else{
+            unset($reqArray['password']);
         }
 
         $user->update($reqArray);
         return redirect()->route('users.edit', $user->id);;
     }
-
 }

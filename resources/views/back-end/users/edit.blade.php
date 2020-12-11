@@ -1,10 +1,5 @@
 @extends('back-end.layout.app')
 
-@php
-$pageTitle = 'users home page';
-$pageDesc = 'you can edit user from here';
-@endphp
-
 @section('title')
     {{ $pageTitle }}
 @endsection
@@ -19,7 +14,7 @@ $pageDesc = 'you can edit user from here';
             <div class="card">
                 <div class="col-8">
                     <div class="card-body" style="color: white;">
-                        <h3 class="card-title" style="color: white;">User Edit</h3>
+                        <h3 class="card-title" style="color: white;">{{$modelName}} Edit</h3>
                         <p class="card-text">
                             {{ $pageDesc }}
                         </p>
@@ -35,7 +30,7 @@ $pageDesc = 'you can edit user from here';
                     @method('PUT')
                     @include('back-end.users.form')
                     <button type="submit" class="btn btn-primary">Update</button>
-                    <a href="{{ route('users.index') }}" class="btn btn-primary ml-3">All User</a>
+                    <a href="{{ route('users.index') }}" class="btn btn-primary ml-3">back to users</a>
                 </form>
             </div>
 

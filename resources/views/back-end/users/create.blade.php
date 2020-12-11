@@ -1,10 +1,5 @@
 @extends('back-end.layout.app')
 
-@php
-$pageTitle = 'users home page';
-$pageDesc = 'you can create user from here';
-@endphp
-
 @section('title')
     {{ $pageTitle }}
 @endsection
@@ -29,7 +24,7 @@ $pageDesc = 'you can create user from here';
             <div class="card">
                 <div class="col-8">
                     <div class="card-body" style="color: white;">
-                        <h3 class="card-title" style="color: white;">User Create</h3>
+                        <h3 class="card-title" style="color: white;">{{$modelName}} create</h3>
                         <p class="card-text">
                             {{ $pageDesc }}
                         </p>
@@ -44,6 +39,7 @@ $pageDesc = 'you can create user from here';
                 <form action="{{ route('users.store') }}" method="POST">
                     @include('back-end.users.form')
                     <button type="submit" class="btn btn-primary">Add User</button>
+                    <a href='{{ route('users.index') }}' class="btn btn-primary">Back to users</a>
                 </form>
             </div>
 

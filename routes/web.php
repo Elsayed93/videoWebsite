@@ -21,8 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::namespace('App\Http\Controllers\BackEnd\\')->prefix('admin')->group(function(){
+Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->group(function () {
     Route::get('/', 'Home@index');
     Route::resource('/users', 'usersController')->except('delete');
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
