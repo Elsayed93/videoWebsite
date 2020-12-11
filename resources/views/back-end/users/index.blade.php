@@ -35,51 +35,37 @@
     @component('back-end.layout.nav-bar', ['navBar_title' => 'Users Page'])
 
     @endcomponent
-    <div class="card" style="width: fit-content;">
-        <div class="row">
-            <div class="col-8">
-                <div class="card-body" style="color: white;">
-                    <h3 class="card-title" style="color: white;">{{ $modelName }} index</h3>
-                    <p class="card-text">
-                        {{ $pageDesc }}
-                    </p>
-                </div>
-            </div>
 
+    @component('back-end.shared.table', ['modelName' => $modelName, 'singleModelName' => $singleModelName, 'pageDesc' =>
+        $pageDesc])
+        @slot('addButton')
             <div class="col-4 d-flex align-items-center">
-                <a class="btn btn-primary" href="{{ route('users.create') }}" role="button">Add {{ $singleModelName }}</a>
+                <a class="btn btn-primary" href="{{ route($routeName . '.create') }}" role="button">Add {{ $singleModelName }}</a>
             </div>
-        </div>
-    </div>
-    <table class="table table-light">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
+        @endslot
+        <table class="table table-light">
+            <thead>
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>
-                        <a href="{{ route('users.edit', $user) }}"><i rel='tooltip' class="far fa-edit fa-lg mr-2"
-                                data-original-title="Edit {{$singleModelName}}"></i></a>
-                        <form action="{{ route('users.destroy', $user) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit"><i rel='tooltip' class="fas fa-trash-alt fa-lg mr-2"
-                                    data-original-title="Remove {{$singleModelName}}"></i></button>
-                        </form>
-                    </td>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {!! $users->links() !!}
-
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            @include('back-end.shared.buttons.edit')
+                            @include('back-end.shared.buttons.delete')
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {!! $users->links() !!}
+    @endcomponent
 @endsection

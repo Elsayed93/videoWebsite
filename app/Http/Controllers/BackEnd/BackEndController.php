@@ -27,13 +27,15 @@ class BackEndController extends Controller
         $singleModelName = $this->getModelName();
         $pageTitle = $modelName . ' page';
         $pageDesc = 'you can add, edit and delete user from here';
+        $routeName = $this->getClassNameFromModel(); //users
 
         return view('back-end.' . $this->getClassNameFromModel() . '.index', compact(
             $this->getClassNameFromModel(),
             'modelName',
             'pageTitle',
             'pageDesc',
-            'singleModelName'
+            'singleModelName',
+            'routeName'
         ));
     }
 
@@ -42,10 +44,13 @@ class BackEndController extends Controller
         $modelName = $this->getModelName();
         $pageTitle = $modelName . ' home page';
         $pageDesc = 'you can create user from here';
-        return view('back-end.' . $this->getClassNameFromModel() . '.create', compact(
+        $routeName = $this->getClassNameFromModel(); //users
+        
+        return view('back-end.' . $routeName . '.create', compact(
             'modelName',
             'pageTitle',
-            'pageDesc'
+            'pageDesc',
+            'routeName'
         ));
     }
 
@@ -60,13 +65,15 @@ class BackEndController extends Controller
         $modelName = $this->getModelName();
         $pageTitle = $modelName . ' home page';
         $pageDesc = 'you can edit user from here';
+        $routeName = $this->getClassNameFromModel(); //users
 
         $user = $this->model->findorfail($id);
-        return view('back-end.' . $this->getClassNameFromModel() . '.edit', compact(
+        return view('back-end.' . $routeName . '.edit', compact(
             'user',
             'modelName',
             'pageTitle',
-            'pageDesc'
+            'pageDesc',
+            'routeName'
         ));
     }
 
@@ -87,6 +94,6 @@ class BackEndController extends Controller
 
     protected function getClassNameFromModel() //(Users) Class => usersController
     {
-        return Str::plural(strtolower($this->getModelName())); // return Users
+        return Str::plural(strtolower($this->getModelName())); // return users
     }
 }
