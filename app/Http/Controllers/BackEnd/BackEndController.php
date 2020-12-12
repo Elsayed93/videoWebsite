@@ -45,12 +45,14 @@ class BackEndController extends Controller
         $pageTitle = $modelName . ' home page';
         $pageDesc = 'you can create '. $this->getModelName() .' from here';
         $routeName = $this->getClassNameFromModel(); //users
+        $singleModelName = $this->getModelName();
 
         return view('back-end.' . $routeName . '.create', compact(
             'modelName',
             'pageTitle',
             'pageDesc',
-            'routeName'
+            'routeName',
+            'singleModelName'
         ));
     }
 
@@ -63,6 +65,7 @@ class BackEndController extends Controller
     public function edit($id)
     {
         $modelName = $this->getModelName();
+        $singleModelName = $this->getModelName();
         $pageTitle = $modelName . ' home page';
         $pageDesc = 'you can edit user from here';
         $routeName = $this->getClassNameFromModel(); //users
@@ -73,7 +76,8 @@ class BackEndController extends Controller
             'modelName',
             'pageTitle',
             'pageDesc',
-            'routeName'
+            'routeName',
+            'singleModelName'
         ));
     }
 
