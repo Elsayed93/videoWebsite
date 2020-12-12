@@ -32,7 +32,7 @@
 @endpush
 
 @section('content')
-    @component('back-end.layout.nav-bar', ['navBar_title' => 'Users Page'])
+    @component('back-end.layout.nav-bar', ['navBar_title' => $routeName.' Page'])
 
     @endcomponent
 
