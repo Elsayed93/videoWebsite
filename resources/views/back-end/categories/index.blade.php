@@ -44,23 +44,21 @@
             </div>
         @endslot
         <table class="table table-light">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Action</th>
-            </tr>
-            @foreach ($rows as $row)
                 <tr>
-                    <td>{{ $row->id }}</td>
-                    <td>{{ $row->name }}</td>
-                    <td>{{ $row->email }}</td>
-                    <td>
-                        @include('back-end.shared.buttons.edit')
-                        @include('back-end.shared.buttons.delete')
-                    </td>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
                 </tr>
-            @endforeach
+                @foreach ($rows as $row)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>
+                            @include('back-end.shared.buttons.edit')
+                            @include('back-end.shared.buttons.delete')
+                        </td>
+                    </tr>
+                @endforeach
         </table>
         {!! $rows->links() !!}
     @endcomponent

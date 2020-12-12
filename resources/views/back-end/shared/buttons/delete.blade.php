@@ -1,4 +1,4 @@
-<form action="{{ route($routeName . '.destroy', $user) }}" method="POST">
+<form action="{{ route($routeName . '.destroy', $row) }}" method="POST">
     @csrf
     @method('delete')
     <button type="submit"><i rel='tooltip' class="fas fa-trash-alt fa-lg mr-2"

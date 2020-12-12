@@ -19,18 +19,18 @@ class BackEndController extends Controller
     public function index()
     {
 
-        $users = $this->model;
-        $users = $this->filter($users);
-        $users = $users->paginate(10);
+        $rows = $this->model;
+        $rows = $this->filter($rows);
+        $rows = $rows->paginate(10);
 
         $modelName = $this->getClassNameFromModel();
         $singleModelName = $this->getModelName();
         $pageTitle = $modelName . ' page';
-        $pageDesc = 'you can add, edit and delete user from here';
+        $pageDesc = 'you can add, edit and delete '. $this->getClassNameFromModel() .' from here';
         $routeName = $this->getClassNameFromModel(); //users
 
         return view('back-end.' . $this->getClassNameFromModel() . '.index', compact(
-            $this->getClassNameFromModel(),
+            'rows',
             'modelName',
             'pageTitle',
             'pageDesc',
@@ -43,9 +43,9 @@ class BackEndController extends Controller
     {
         $modelName = $this->getModelName();
         $pageTitle = $modelName . ' home page';
-        $pageDesc = 'you can create user from here';
+        $pageDesc = 'you can create '. $this->getModelName() .' from here';
         $routeName = $this->getClassNameFromModel(); //users
-        
+
         return view('back-end.' . $routeName . '.create', compact(
             'modelName',
             'pageTitle',
@@ -67,9 +67,9 @@ class BackEndController extends Controller
         $pageDesc = 'you can edit user from here';
         $routeName = $this->getClassNameFromModel(); //users
 
-        $user = $this->model->findorfail($id);
+        $row = $this->model->findorfail($id);
         return view('back-end.' . $routeName . '.edit', compact(
-            'user',
+            'row',
             'modelName',
             'pageTitle',
             'pageDesc',
@@ -82,14 +82,14 @@ class BackEndController extends Controller
         return $rows;
     }
 
-    // protected function pluralModelName()
-    // {
-    //     return strtolower(class_basename($this->model));
-    // }
+    protected function pluralModelName()
+    {
+        return strtolower(class_basename($this->model)); //user
+    }
 
     protected function getModelName() //(User) Model
     {
-        return ucfirst(strtolower(class_basename($this->model))); //return User
+        return ucfirst($this->pluralModelName()); //return User
     }
 
     protected function getClassNameFromModel() //(Users) Class => usersController

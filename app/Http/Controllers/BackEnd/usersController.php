@@ -39,7 +39,7 @@ class usersController extends BackEndController
 
     public function update($id, Update $request)
     {
-        $user = $this->model->findorfail($id);
+        $row = $this->model->findorfail($id);
         $reqArray = $request->all();
 
         if (isset($reqArray['password']) && $reqArray['password'] != '') {
@@ -48,7 +48,7 @@ class usersController extends BackEndController
             unset($reqArray['password']);
         }
 
-        $user->update($reqArray);
-        return redirect()->route('users.edit', $user->id);;
+        $row->update($reqArray);
+        return redirect()->route('users.edit', $row->id);
     }
 }

@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->group(function () {
     Route::get('/', 'Home@index');
-    Route::resource('/users', 'usersController')->except('delete');
+    Route::resource('/users', 'usersController')->except('show');
+    Route::resource('/categories', 'Categories')->except('show');
 });
 require __DIR__ . '/auth.php';
