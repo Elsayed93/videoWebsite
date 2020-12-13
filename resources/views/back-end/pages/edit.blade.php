@@ -7,7 +7,7 @@
 
 @section('content')
 
-    @component('back-end.layout.nav-bar', ['navBar_title' => ' User'])
+    @component('back-end.layout.nav-bar', ['navBar_title' => 'Edit '. $singleModelName])
 
     @endcomponent
 

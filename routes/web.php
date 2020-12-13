@@ -27,5 +27,6 @@ Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->group(functio
     Route::resource('/categories', 'Categories')->except('show');
     Route::resource('/skills', 'Skills')->except('show');
     Route::resource('/tags', 'Tags')->except('show');
+    Route::resource('/pages', 'Pages')->except('show');
 });
 require __DIR__ . '/auth.php';
