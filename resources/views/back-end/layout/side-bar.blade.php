@@ -54,6 +54,12 @@
           </a>
         </li>
 
+        <li class="nav-item {{is_active('videos')}}">
+          <a class="nav-link" href="{{route('videos.index')}}">
+            <i class="material-icons">dashboard</i>
+            <p>Videos</p>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
