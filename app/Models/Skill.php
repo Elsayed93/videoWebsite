@@ -9,4 +9,8 @@ class Skill extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+    public function videos()
+    {
+        return $this->belongsToMany(Video::class ,'skills_videos');
+    }
 }

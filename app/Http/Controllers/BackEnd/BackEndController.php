@@ -21,6 +21,10 @@ class BackEndController extends Controller
 
         $rows = $this->model;
         $rows = $this->filter($rows);
+        $with=$this->with();
+        if(!empty($with)){
+            $rows=$rows->with($with);
+        }
         $rows = $rows->paginate(10);
 
         $modelName = $this->getClassNameFromModel();
@@ -28,6 +32,7 @@ class BackEndController extends Controller
         $pageTitle = $modelName . ' page';
         $pageDesc = 'you can add, edit and delete '. $this->getClassNameFromModel() .' from here';
         $routeName = $this->getClassNameFromModel(); //users
+        
 
         return view('back-end.' . $this->getClassNameFromModel() . '.index', compact(
             'rows',
@@ -46,6 +51,7 @@ class BackEndController extends Controller
         $pageDesc = 'you can create '. $this->getModelName() .' from here';
         $routeName = $this->getClassNameFromModel(); //users
         $singleModelName = $this->getModelName();
+        $append=$this->append();
 
         return view('back-end.' . $routeName . '.create', compact(
             'modelName',
@@ -53,7 +59,7 @@ class BackEndController extends Controller
             'pageDesc',
             'routeName',
             'singleModelName'
-        ));
+        ))->with($append);
     }
 
     public function destroy($id)
@@ -69,6 +75,7 @@ class BackEndController extends Controller
         $pageTitle = $modelName . ' home page';
         $pageDesc = 'you can edit user from here';
         $routeName = $this->getClassNameFromModel(); //users
+        $append=$this->append();
 
         $row = $this->model->findorfail($id);
         return view('back-end.' . $routeName . '.edit', compact(
@@ -78,12 +85,16 @@ class BackEndController extends Controller
             'pageDesc',
             'routeName',
             'singleModelName'
-        ));
+        ))->with($append);
     }
 
     protected function filter($rows)
     {
         return $rows;
+    }
+    protected function with()
+    {
+        return [];
     }
 
     protected function pluralModelName()
@@ -99,5 +110,9 @@ class BackEndController extends Controller
     protected function getClassNameFromModel() //(Users) Class => usersController
     {
         return Str::plural(strtolower($this->getModelName())); // return users
+    }
+    protected function append()
+    {
+        return [];
     }
 }
