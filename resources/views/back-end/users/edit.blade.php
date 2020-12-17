@@ -16,8 +16,11 @@
             @method('PUT')
             @include('back-end.'.$routeName.'.form')
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route($routeName . '.index') }}" class="btn btn-primary ml-3">back to {{$routeName}}</a>
+            <a href="{{ route($routeName . '.index') }}" class="btn btn-primary ml-3">back to {{ $routeName }}</a>
         </form>
+        @slot('md4')
+            
+        @endslot
     @endcomponent
 
 @endsection
