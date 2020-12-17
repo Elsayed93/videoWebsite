@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Requests\backend\Videos\Store as VideosStore;
+use App\Http\Requests\backend\Videos\Store as VideosUpdate;
 use App\Models\Video;
-use Illuminate\Http\Request\BackEnd\Videos\Store;
+// use Illuminate\Http\Request\BackEnd\Videos\Store;
+// use Illuminate\Http\Request\BackEnd\Videos\update;
 use App\Models\Category;
 use App\Models\Skill;
 use App\Models\Tag;
@@ -47,16 +49,27 @@ class Videos extends BackEndController
 
     public function store(VideosStore $request)
     {
-        $requestArray = $request->all() + ['user_id' => auth()->user()->id];
+        $file = $request->file('image');
+        $fileName = time() . random_int(5, 10) . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads'), $fileName);
+        $requestArray =  ['user_id' => auth()->user()->id, 'image' => $fileName] + $request->all();
         $row = $this->model->create($requestArray);
         $this->syncTagsSkills($row, $requestArray);
 
         return redirect()->route('videos.index');
     }
 
-    public function update($id, VideosStore $request)
+    public function update($id, VideosUpdate $request)
     {
+
         $requestArray = $request->all();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . random_int(5, 10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads'), $fileName);
+            $requestArray = ['image' => $fileName] + $requestArray;
+        }
         $row = $this->model->findorfail($id);
         $row->update($requestArray);
         $this->syncTagsSkills($row, $requestArray);

@@ -21,7 +21,7 @@
     @endcomponent
 
     @component('back-end.shared.create', ['modelName' => $modelName, 'pageDesc' => $pageDesc])
-        <form action="{{ route($routeName . '.store') }}" method="POST">
+        <form action="{{ route($routeName . '.store') }}" method="POST" enctype="multipart/form-data">
             @include('back-end.'.$routeName.'.form')
             <button type="submit" class="btn btn-primary">Add {{ $routeName }}</button>
             <a href='{{ route($routeName . '.index') }}' class="btn btn-primary">Back to {{ $routeName }}</a>

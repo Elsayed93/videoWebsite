@@ -12,7 +12,7 @@
     @endcomponent
 
     @component('back-end.shared.edit', ['modelName' => $modelName, 'pageDesc' => $pageDesc])
-        <form action="{{ route($routeName . '.update', $row) }}" method="POST">
+        <form action="{{ route($routeName . '.update', $row) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @include('back-end.'.$routeName.'.form')
             <button type="submit" class="btn btn-primary">Update</button>
@@ -23,11 +23,12 @@
             $url = getYoutubeId($row->youtube)
             @endphp
             @if ($url)
-            <iframe width="280" src="https://www.youtube.com/embed/{{$url}}" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            
+                <iframe width="280" src="https://www.youtube.com/embed/{{ $url }}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                <br>
             @endif
+            <img width="280" src="{{ url('uploads/' . $row->image) }}" alt="">
         @endslot
     @endcomponent
 @endsection

@@ -14,6 +14,7 @@
     @enderror
 
 </div>
+<br>
 
 <div class="form-group">
 
@@ -30,6 +31,7 @@
     @enderror
 
 </div>
+<br>
 
 <div class="form-group">
 
@@ -46,6 +48,8 @@
     @enderror
 
 </div>
+<br>
+
 <div class="form-group">
 
     @php $input = 'youtube'; @endphp
@@ -61,6 +65,8 @@
     @enderror
 
 </div>
+<br>
+
 <div class="form-group">
 
     @php $input = 'published'; @endphp
@@ -77,14 +83,13 @@
     @enderror
 
 </div>
-<div class="form-group">
+<br>
+
+<div>
 
     @php $input = 'image'; @endphp
-    <label for="exampleInputEmail1">Video image</label>
-    <input type="text" class="form-control @error($input)
-                            is-invalid
-    @enderror" value="{{ isset($row) ? $row->{$input} : '' }}" id="exampleInputEmail1" aria-describedby="emailHelp"
-        name="{{ $input }}">
+    <label for="exampleInputEmail1">Video image</label><br>
+    <input type="file" name="{{ $input }}">
     @error($input)
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -92,7 +97,7 @@
     @enderror
 
 </div>
-
+<br>
 <div class="form-group">
 
     @php $input = 'cat_id'; @endphp
@@ -110,6 +115,7 @@
     @enderror
 
 </div>
+<br>
 
 <div class="form-group">
 
@@ -124,6 +130,8 @@
     @enderror
 
 </div>
+<br>
+
 <div class="form-group">
 
     @php $input = 'skills[]'; @endphp
@@ -141,6 +149,7 @@
     @enderror
 
 </div>
+<br>
 
 <div class="form-group">
 
