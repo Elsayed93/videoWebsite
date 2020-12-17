@@ -21,7 +21,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->group(function () {
+Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', 'Home@index')->name('admin.home');
     Route::resource('/users', 'usersController')->except('show');
     Route::resource('/categories', 'Categories')->except('show');
