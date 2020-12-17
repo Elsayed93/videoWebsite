@@ -29,5 +29,6 @@ Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('a
     Route::resource('/tags', 'Tags')->except('show');
     Route::resource('/pages', 'Pages')->except('show');
     Route::resource('/videos', 'Videos')->except('show');
+    Route::post('/comments', 'Videos@commentStore')->name('comment.store');
 });
 require __DIR__ . '/auth.php';

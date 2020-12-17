@@ -30,5 +30,8 @@
             @endif
             <img width="280" src="{{ url('uploads/' . $row->image) }}" alt="">
         @endslot
+        <br>
+        @include('back-end.comments.create')
+        @include('back-end.comments.index')
     @endcomponent
 @endsection
