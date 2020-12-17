@@ -39,7 +39,7 @@ class Videos extends BackEndController
             $array['selectedTags'] = $this->model->find(request()->route()->parameter('video'))
                 ->tags()->pluck('tags.id')->toarray();
 
-            dd($array['selectedSkills']);
+            // dd($array['selectedSkills']);
         }
 
         return $array;
@@ -63,6 +63,7 @@ class Videos extends BackEndController
 
         return redirect()->route('videos.edit', $row->id);
     }
+
     protected function syncTagsSkills($row, $requestArray)
     {
         if (isset($requestArray['skills']) && !empty($requestArray['skills'])) {

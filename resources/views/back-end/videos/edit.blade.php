@@ -7,7 +7,7 @@
 
 @section('content')
 
-    @component('back-end.layout.nav-bar', ['navBar_title' => 'Edit '. $singleModelName])
+    @component('back-end.layout.nav-bar', ['navBar_title' => 'Edit ' . $singleModelName])
 
     @endcomponent
 
@@ -16,10 +16,18 @@
             @method('PUT')
             @include('back-end.'.$routeName.'.form')
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route($routeName . '.index') }}" class="btn btn-primary ml-3">back to {{$routeName}}</a>
+            <a href="{{ route($routeName . '.index') }}" class="btn btn-primary ml-3">back to {{ $routeName }}</a>
         </form>
         @slot('md4')
-            <iframe width="250" src="https://www.youtube.com/embed/ACOiGZoqC8w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            @php
+            $url = getYoutubeId($row->youtube)
+            @endphp
+            @if ($url)
+            <iframe width="280" src="https://www.youtube.com/embed/{{$url}}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            
+            @endif
         @endslot
     @endcomponent
 @endsection
