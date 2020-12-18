@@ -12,7 +12,7 @@ class Video extends Model
     'name',
     'des',
     'meta_des',
-    'meta_keyword',
+    'meta_keywords',
     'youtube',
     'user_id',
     'cat_id',
