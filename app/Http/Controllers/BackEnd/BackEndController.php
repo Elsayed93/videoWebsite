@@ -84,7 +84,8 @@ class BackEndController extends Controller
             'pageTitle',
             'pageDesc',
             'routeName',
-            'singleModelName'
+            'singleModelName',
+            
         ))->with($append);
     }
 
