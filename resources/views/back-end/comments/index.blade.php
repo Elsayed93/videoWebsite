@@ -1,4 +1,4 @@
-<table class="table table-light">
+<table class="table table-light" id="comments">
     @foreach ($comments as $comment)
         <tr>
             <td>
@@ -9,7 +9,7 @@
             </td>
 
             <td>
-                <a href="{{ route('comment.edit', $comment->id) }}"><i rel='tooltip' class="far fa-edit fa-lg mr-2"
+                <a href="{{ route('comment.edit', $comment->id) }}"><i rel='tooltip' onclick="$(this).closest('tr').next('tr').slideToggle()" class="far fa-edit fa-lg mr-2"
                         data-original-title="Edit comment"></i></a>
 
 
@@ -18,7 +18,7 @@
 
             </td>
         </tr>
-        <tr>
+        <tr style="display: none;">
             <td colspan="4">
                 <form action="{{route('comment.update', ['id' => $comment->id ])}}" method="POST">
                     @csrf
