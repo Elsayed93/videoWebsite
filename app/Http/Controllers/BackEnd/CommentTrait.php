@@ -20,4 +20,11 @@ trait CommentTrait
         $row->delete();
         return redirect()->route('videos.edit', $row->video_id);
     }
+
+    public function commentUpdate($id, Store $request)
+    {
+        $row=Comments::findOrFail($id);
+        $row->update($request->all());
+        return redirect()->route('videos.edit', $row->video_id);
+    }
 }

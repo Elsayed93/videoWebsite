@@ -18,5 +18,16 @@
 
             </td>
         </tr>
+        <tr>
+            <td colspan="4">
+                <form action="{{route('comment.update', ['id' => $comment->id ])}}" method="POST">
+                    @csrf
+                    @include('back-end.comments.form', ['row' => $comment])
+                    <input type="hidden" value="{{$row->id}}" name="video_id">
+                    <button type="submit" class="btn btn-primary">Update Comment</button>
+                    <div class="clearfix"></div>
+                </form> 
+            </td>
+        </tr>
     @endforeach
 </table>

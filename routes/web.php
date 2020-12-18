@@ -31,6 +31,8 @@ Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('a
     Route::resource('/videos', 'Videos')->except('show');
     Route::post('/comments', 'Videos@commentStore')->name('comment.store');
     Route::get('/comments/{id}', 'Videos@commentDelete')->name('comment.delete');
+    Route::post('/comments/{id}', 'Videos@commentUpdate')->name('comment.update');
+
 
 });
 require __DIR__ . '/auth.php';
