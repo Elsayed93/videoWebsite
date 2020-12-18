@@ -45,7 +45,7 @@ class Videos extends BackEndController
                 ->tags()->pluck('tags.id')->toarray();
 
             $array['selectedComments'] = $this->model->find(request()->route()->parameter('video'))
-                ->comments();
+                ->comments()->with('user')->get();
 
             // dd($array['selectedSkills']);
         }
