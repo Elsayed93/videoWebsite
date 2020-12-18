@@ -1,4 +1,4 @@
-<table class="table table-light" id="comments">
+<table class="table table-dark" id="comments">
     @foreach ($comments as $comment)
         <tr>
             <td>
@@ -20,8 +20,9 @@
         </tr>
         <tr style="display: none;">
             <td colspan="4">
-                <form action="{{route('comment.update', ['id' => $comment->id ])}}" method="POST">
+                <form action="{{route('comment.update',  $comment->id )}}" method="POST">
                     @csrf
+                    @method('PUT')
                     @include('back-end.comments.form', ['row' => $comment])
                     <input type="hidden" value="{{$row->id}}" name="video_id">
                     <button type="submit" class="btn btn-primary">Update Comment</button>

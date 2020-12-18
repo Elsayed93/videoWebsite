@@ -5,17 +5,14 @@ namespace App\Http\Controllers\backend;
 use App\Http\Requests\backend\Videos\Store as VideosStore;
 use App\Http\Requests\backend\Videos\Store as VideosUpdate;
 use App\Models\Video;
-// use Illuminate\Http\Request\BackEnd\Videos\Store;
-// use Illuminate\Http\Request\BackEnd\Videos\update;
 use App\Models\Category;
-use App\Models\Comments;
 use App\Models\Skill;
 use App\Models\Tag;
 
 class Videos extends BackEndController
 {
     use CommentTrait;
-    
+
     public function __construct(Video $model)
     {
         parent::__construct($model);
@@ -40,7 +37,7 @@ class Videos extends BackEndController
 
         if (request()->route()->parameter('video')) {
             $array['selectedSkills'] = $this->model->find(request()->route()->parameter('video'))
-                ->skills()->pluck('skills.id')->toarray();
+                ->skills()->get()->pluck('id')->toArray();
 
             $array['selectedTags'] = $this->model->find(request()->route()->parameter('video'))
                 ->tags()->pluck('tags.id')->toarray();
