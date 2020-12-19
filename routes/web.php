@@ -38,8 +38,8 @@ require __DIR__ . '/auth.php';
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('category/{id}', 'App\Http\Controllers\HomeController@category')->name('front.category');
 Route::get('skill/{id}', 'App\Http\Controllers\HomeController@skills')->name('front.skill');
+Route::get('tag/{id}', 'App\Http\Controllers\HomeController@tags')->name('front.tags');
 Route::get('video/{id}', 'App\Http\Controllers\HomeController@video')->name('frontend.video');
-
 // Route::get('tag/{id}', 'HomeController@tags')->name('front.tags');
 // Route::get('video/{id}', 'HomeController@video')->name('frontend.video');
 // Route::get('contact-us', 'HomeController@messageStore')->name('contact.store');

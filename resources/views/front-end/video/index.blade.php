@@ -22,20 +22,33 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>{{ $video->user->name }}</p>
-                    <p>{{ $video->created_at }}</p>
-                    <p>{{ $video->des }}</p>
+                    <table>
+                    <tr>
+                    <td>
+                    <p ><i class="nc-icon nc-user-run">:</i>{{ $video->user->name }}</p>
+                    </td>
+                    <td>
+                    <p></p><i class="nc-icon nc-calendar-60">:</i> {{ $video->created_at }}</p>
+                    </td>
+                    <td>
+                    <p><i class="nc-icon nc-single-copy-04">:</i>{{ $video->des }}</p>
+                    </td>
+                    <td>
                     <p>
                         <a href="{{ route('front.category',["id" => $video->cat->id]) }}">
                         {{ $video->cat->name }}
                         </a>
                     </p>
+                    </td>
+                    <td>
                     <p>
                         @foreach ($video->tags as $tag)
-                        <a href="{{ route('front.skill',["id" => $tag->id]) }}">
+                        <a href="{{ route('front.tags',["id" => $tag->id]) }}">
                         <span class="badge badge-primary">{{ $tag->name }}</span>
                         @endforeach
                     </p>
+                    </td>
+                    <td>
                      <p>
                         @foreach ($video->skills as $skill)
                         <a href="{{ route('front.skill',["id" => $skill->id]) }}">
@@ -43,18 +56,32 @@
                         </a>
                         @endforeach
                     </p>
+                    </td>
+                    </tr>
+                    </table>
                 </div>
             </div>
+            <br><br>
             <div class="row">
                 <div class="col-md-12">
-                    @foreach ($video->comments as $comment)
-                      {{ $comment->comment }} <br> 
+                    <div class="card text-left">
+                    <div class="card-header card-header-rose">
+                        @php
+                          $comments=$video->comments  
+                        @endphp
+                    <h5>Comments({{ count($comments) }})</h5>
+                    </div>
+                    <div class="card-body">
+                    @foreach ( $comments as $comment)
+                     {{ $comment->comment }} <br> 
                     @endforeach
-
-                </div>
             </div>
-            </div>
+           </div>                        
+          </div>
+         </div>
         </div>
-    </div>
+       </div>
+            
+     </div>
 
 @endsection
