@@ -17,10 +17,10 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         // dd(auth()->user());
-        if(auth()->guest()){
+        if (auth()->guest()) {
             return redirect('/login');
         }
-        if(auth()->user() != 'admin'){
+        if (auth()->user()->group != 'admin') {
             return redirect('/');
         }
 
