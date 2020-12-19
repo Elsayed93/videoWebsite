@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function category($id)
     {
         $cat = Category::findOrFail($id);
-        $videos = Video::where('cat_id', 'id')->orderBy('id', 'desc')->paginate(30);
+        $videos = Video::where('cat_id', $id)->orderBy('id', 'desc')->paginate(30);
         return view('front-end.category.index', compact('videos', 'cat'));
     }
 }
