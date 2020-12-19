@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
 @section('title')
-    Online Learning Videos
+    {{ $skill->name }}
 @endsection
-
 @section('content')
     <div class="section section-button">
         <div class="container">
             <div class="title">
-                <h1>Latest Videos</h1>
+                <h1>{{ $skill->name }}</h1>
             </div>
 
-     @include('front-end.shared.video-row')
-        </div>
+ @include('front-end.shared.video-row')
     </div>
 
 @endsection
