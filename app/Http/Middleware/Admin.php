@@ -20,7 +20,7 @@ class Admin
         if(auth()->guest()){
             return redirect('/login');
         }
-        if(auth()->user() != 'admin'){
+        if(auth()->user()->group != 'admin'){
             return redirect('/');
         }
 
