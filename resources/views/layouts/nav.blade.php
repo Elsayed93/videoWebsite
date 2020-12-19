@@ -39,7 +39,7 @@
                         @endforeach
                     </div>
                 </li>
-
+               @guest
                 <li class="nav-item">
                     <a href="{{ url('/login') }}" class="nav-link">
                         login
@@ -51,7 +51,29 @@
                         Register
                     </a>
                 </li>
+               @else 
+               <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                       
+                            <div class="mt-3 space-y-1">
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Logout') }}
+                    </x-responsive-nav-link>
+                </form>
+            </div>
+                @endguest
             </ul>
+            
         </div>
     </div>
 </nav>

@@ -79,30 +79,48 @@
                     </div>
                     <div class="col-md-4 text-right">
                         <span><i class="nc-icon nc-calendar-60">:</i>{{ $comment->created_at }}</span>
-                        @if (auth()->user()->group == 'admin' || auth()->user()->id == $comment->user->id)
-                        <a href="">  | edit</a> 
-                        <div>
-                            <form action="{{ route('front.commentUpdate',['id' => $comment->id]) }}" method="POST">
-                                @csrf
-                                <textarea name="comment" rows="6">{{ $comment->comment }}</textarea>                        
-                                <button type="submit">Edit</button>
-                            </form> 
-                            </div>                            
-                        @endif
+                        
                     </div>
                     </div>                    
                      <p>{{ $comment->comment }}</p> <br>
+                     @if (auth()->user()->group == 'admin' || auth()->user()->id == $comment->user->id)
+                        <a href="" onclick="$(this).next('div').slideToggle(1000);return false;">  | edit</a> 
+                        <div style="display: none">
+                            <form action="{{ route('front.commentUpdate',['id' => $comment->id]) }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                <textarea name="comment" class="form-control" rows="6">{{ $comment->comment }}</textarea>                        
+                                </div>
+                                <button type="submit" class="btn">Edit</button>
+                            </form> 
+                            </div>                            
+                        @endif
                      @if (! $loop->last)
                          <hr>
                      @endif
                     @endforeach
             </div>
+            <br><br>
+      
            </div>                        
           </div>
+          <div class="row" id="comments">
+              @if (auth()->user())
+                  
+              <form action="{{ route('front.commentStore',['id' => $video->id]) }}" method="POST">
+                 @csrf
+                <div class="form-group">
+                    <label for="">Add Comment</label>
+                <textarea name="comment" class="form-control" cols="200" rows="5"></textarea>                        
+                </div>
+                <button type="submit" class="btn btn-default">Add Comment</button>
+                </form> 
+              @endif
+
+       </div>    
          </div>
         </div>
-       </div>
-            
+               
      </div>
 
 @endsection
