@@ -9,21 +9,9 @@
             <div class="title">
                 <h1>{{ $cat->name }}</h1>
             </div>
-
-            <div class="row">
-                @foreach ($videos as $video)
-                    <div class="col-lg-4">
-                        @include('front-end.shared.video-card')
-
-                    </div>
-                @endforeach
-
-            </div>
-
-            <div class="row">
+             @include('front-end.shared.video-row')  
                 <div class="col-md-12">
                     {{ $videos->links() }}
-                </div>
             </div>
         </div>
     </div>
