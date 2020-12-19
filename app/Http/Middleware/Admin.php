@@ -20,6 +20,9 @@ class Admin
         if(auth()->guest()){
             return redirect('/login');
         }
+        if(auth()->user() != 'admin'){
+            return redirect('/');
+        }
 
         return $next($request);
     }

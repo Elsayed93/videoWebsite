@@ -48,6 +48,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Role</th>
                 <th scope="col">Action</th>
             </tr>
             @foreach ($rows as $row)
@@ -55,6 +56,7 @@
                     <td>{{ $row->id }}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
+                    <td>{{ $row->group }}</td>
                     <td>
                         @include('back-end.shared.buttons.edit')
                         @include('back-end.shared.buttons.delete')
