@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Online Learning Videos
+@endsection
+
 @section('content')
     {{-- start of Header --}}
     <div class="page-header section-dark" style="background-image: url('/frontend/img/antoine-barres.jpg')">
