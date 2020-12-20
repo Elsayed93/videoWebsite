@@ -71,4 +71,8 @@ class HomeController extends Controller
         Message::create($request->all());
         return redirect()->route('frontend.landing');
     }
+    public function welcome(Type $var = null)
+    {
+        return view('welcome');
+    }
 }

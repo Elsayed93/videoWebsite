@@ -13,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('frontend.landing');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome');
 })->middleware(['auth'])->name('dashboard');
 
 Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('admin')->group(function () {
@@ -43,6 +40,7 @@ Route::get('skill/{id}', 'App\Http\Controllers\HomeController@skills')->name('fr
 Route::get('tag/{id}', 'App\Http\Controllers\HomeController@tags')->name('front.tags');
 Route::get('video/{id}', 'App\Http\Controllers\HomeController@video')->name('frontend.video');
 Route::get('contact-us', 'App\Http\Controllers\HomeController@messageStore')->name('contact.store');
+Route::get('/', 'App\Http\Controllers\HomeController@welcome')->name('frontend.landing');
 
 // Route::get('tag/{id}', 'HomeController@tags')->name('front.tags');
 // Route::get('video/{id}', 'HomeController@video')->name('frontend.video');

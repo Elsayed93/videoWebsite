@@ -29,7 +29,7 @@
 
     @yield('content')
 
-    <div class="main">
+    {{-- <div class="main">
 
         <div class="card" style="width: 20rem;">
             <ul class="list-group list-group-flush">
@@ -46,7 +46,7 @@
                     card's content.</p>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- start of footer --}}
     @include('layouts.footer')
     {{-- end of footer --}}
