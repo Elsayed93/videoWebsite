@@ -29,6 +29,7 @@ Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('a
     Route::resource('/tags', 'Tags')->except('show');
     Route::resource('/pages', 'Pages')->except('show');
     Route::resource('/videos', 'Videos')->except('show');
+    Route::resource('/messages', 'Messages')->only(['index', 'destroy', 'edit']);
     Route::post('/comments', 'Videos@commentStore')->name('comment.store');
     Route::get('/comments/{id}', 'Videos@commentDelete')->name('comment.delete');
     Route::post('/comments/{id}', 'Videos@commentUpdate')->name('comment.update');
@@ -40,7 +41,8 @@ Route::get('category/{id}', 'App\Http\Controllers\HomeController@category')->nam
 Route::get('skill/{id}', 'App\Http\Controllers\HomeController@skills')->name('front.skill');
 Route::get('tag/{id}', 'App\Http\Controllers\HomeController@tags')->name('front.tags');
 Route::get('video/{id}', 'App\Http\Controllers\HomeController@video')->name('frontend.video');
-Route::post('comments/{id}', 'App\Http\Controllers\HomeController@commentUpdate')->name('front.commentUpdate');
+Route::get('contact-us', 'App\Http\Controllers\HomeController@messageStore')->name('contact.store');
+
 // Route::get('tag/{id}', 'HomeController@tags')->name('front.tags');
 // Route::get('video/{id}', 'HomeController@video')->name('frontend.video');
 // Route::get('contact-us', 'HomeController@messageStore')->name('contact.store');

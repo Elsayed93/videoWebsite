@@ -84,7 +84,7 @@
                                 </div>
                                 <p>{{ $comment->comment }}</p> <br>
                                 @if (auth()->user()->group == 'admin' || auth()->user()->id == $comment->user->id)
-                                    <a href="" onclick="$(this).next('div').slideToggle(1000);return false;"> | edit</a>
+                                    <a href="" onclick="$(this).next('div').slideToggle(1000);return false;">edit</a>
                                     <div style="display: none">
                                         <form action="{{ route('front.commentUpdate', ['id' => $comment->id]) }}"
                                             method="POST">

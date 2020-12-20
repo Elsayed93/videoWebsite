@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FrontEnd\Comments\Store;
+use App\Http\Requests\FrontEnd\Messages\Store as MessagesStore;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\Skill;
 use App\Models\Tag;
 use App\Models\Comments;
+use App\Models\Message;
 
 class HomeController extends Controller
 {
@@ -63,5 +65,10 @@ class HomeController extends Controller
             'comment' => $request->comment
         ]);
         return redirect()->route('frontend.video', ['id' => $video->id, '#comments']);
+    }
+    public function messageStore(MessagesStore $request)
+    {
+        Message::create($request->all());
+        return redirect()->route('frontend.landing');
     }
 }
