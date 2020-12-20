@@ -20,11 +20,7 @@ class Admin
         if (auth()->guest()) {
             return redirect('/login');
         }
-<<<<<<< HEAD
-        if(auth()->user()->group != 'admin'){
-=======
         if (auth()->user()->group != 'admin') {
->>>>>>> 8418bc6fb42d649ebe923ebff89b9218ef7448e4
             return redirect('/');
         }
 
