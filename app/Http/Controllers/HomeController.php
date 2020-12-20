@@ -71,8 +71,12 @@ class HomeController extends Controller
         Message::create($request->all());
         return redirect()->route('frontend.landing');
     }
-    public function welcome(Type $var = null)
+    public function welcome()
     {
-        return view('welcome');
+        $videos = Video::orderBy('id', 'desc')->paginate(9);
+        $videos_Count = Video::count();
+        $comments_Count = Comments::count();
+        $tags_Count = Tag::count();
+        return view('welcome', compact('videos', 'videos_Count', 'comments_Count', 'tags_Count'));
     }
 }
