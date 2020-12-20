@@ -30,6 +30,7 @@ Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('a
     Route::resource('/pages', 'Pages')->except('show');
     Route::resource('/videos', 'Videos')->except('show');
     Route::resource('/messages', 'Messages')->only(['index', 'destroy', 'edit']);
+    Route::post('/messages/replay/{id}', 'Messages@replay')->name('message.replay');
     Route::post('/comments', 'Videos@commentStore')->name('comment.store');
     Route::get('/comments/{id}', 'Videos@commentDelete')->name('comment.delete');
     Route::post('/comments/{id}', 'Videos@commentUpdate')->name('comment.update');

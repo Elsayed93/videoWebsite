@@ -46,3 +46,22 @@
     @enderror
 
 </div>
+<hr>
+<h4>Replay On Message</h4>
+<br>
+<div class="form-group">
+<form action="{{ route('message.replay',["id" => $row->id]) }}" method="POST">
+    @csrf
+    @php $input = 'message'; @endphp
+    <label for="exampleInputPassword1">Message</label>
+    <textarea name="{{ $input }}" cols="30" rows="10"
+        class="form-control @error($input) is-invalid @enderror"></textarea>
+    @error($input)
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    <button type="submit" class="btn btn-primary">Replay {{ $routeName }}</button>
+           
+</form>
+</div>
