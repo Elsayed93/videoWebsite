@@ -62,7 +62,7 @@
                 </div>
             </div>
             <br><br>
-            <div class="row">
+            <div class="row" id="comments">
                 <div class="col-md-12">
                     <div class="card text-left">
                     <div class="card-header card-header-rose">
@@ -73,7 +73,28 @@
                     </div>
                     <div class="card-body">
                     @foreach ( $comments as $comment)
-                     {{ $comment->comment }} <br> 
+                    <div class="row">
+                        <div class="col-md-8">
+                        <i class="nc-icon nc-33">:</i>{{ $comment->user->name }}
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <span><i class="nc-icon nc-calendar-60">:</i>{{ $comment->created_at }}</span>
+                        @if (auth()->user()->group == 'admin' || auth()->user()->id == $comment->user->id)
+                        <a href="">  | edit</a> 
+                        <div>
+                            <form action="{{ route('front.commentUpdate',['id' => $comment->id]) }}" method="POST">
+                                @csrf
+                                <textarea name="comment" rows="6">{{ $comment->comment }}</textarea>                        
+                                <button type="submit">Edit</button>
+                            </form> 
+                            </div>                            
+                        @endif
+                    </div>
+                    </div>                    
+                     <p>{{ $comment->comment }}</p> <br>
+                     @if (! $loop->last)
+                         <hr>
+                     @endif
                     @endforeach
             </div>
            </div>                        

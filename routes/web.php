@@ -40,6 +40,7 @@ Route::get('category/{id}', 'App\Http\Controllers\HomeController@category')->nam
 Route::get('skill/{id}', 'App\Http\Controllers\HomeController@skills')->name('front.skill');
 Route::get('tag/{id}', 'App\Http\Controllers\HomeController@tags')->name('front.tags');
 Route::get('video/{id}', 'App\Http\Controllers\HomeController@video')->name('frontend.video');
+Route::post('comments/{id}', 'App\Http\Controllers\HomeController@commentUpdate')->name('front.commentUpdate');
 // Route::get('tag/{id}', 'HomeController@tags')->name('front.tags');
 // Route::get('video/{id}', 'HomeController@video')->name('frontend.video');
 // Route::get('contact-us', 'HomeController@messageStore')->name('contact.store');
