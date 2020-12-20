@@ -20,9 +20,8 @@ class SkillsSeeder extends Seeder
             $array = [
                 'name' => $faker->word,
             ];
+            
+            \App\Models\Skill::create($array);
         }
-
-
-        \App\Models\Skill::create($array);
     }
 }

@@ -21,8 +21,7 @@ class CommentsSeeder extends Seeder
                 'user_id' => 1,
                 'video_id' => rand(1, 9),
             ];
+            \App\Models\Comments::create($array);
         }
-        
-        \App\Models\Comments::create($array);
     }
 }

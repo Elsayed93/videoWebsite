@@ -20,8 +20,7 @@ class TagsSeeder extends Seeder
             $array = [
                 'name' => $faker->word,
             ];
+            \App\Models\Tag::create($array);
         }
-
-        \App\Models\Tag::create($array);
     }
 }

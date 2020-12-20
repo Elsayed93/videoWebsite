@@ -23,8 +23,7 @@ class CategoriesSeeder extends Seeder
                 'meta_keywords' => $faker->name,
                 'meta_des' => $faker->name,
             ];
+            \App\Models\Category::create($array);
         }
-
-        \App\Models\Category::create($array);
     }
 }

@@ -27,9 +27,7 @@ class VideosSeeder extends Seeder
                 'cat_id' => 1,
                 'image' => '160824167510.png',
             ];
+            \App\Models\Video::create($array);
         }
-
-
-        \App\Models\Video::create($array);
     }
 }
