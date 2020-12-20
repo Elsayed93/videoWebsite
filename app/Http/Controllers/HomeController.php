@@ -54,4 +54,14 @@ class HomeController extends Controller
         }
         return redirect()->route('frontend.video', ['id' => $comment->video_id, '#comments']);
     }
+    public function commentStore($id, Store $request)
+    {
+        $video = Video::findOrFail($id);
+        Comments::create([
+            'user_id' => auth()->user()->id,
+            'video_id' => $video->id,
+            'comment' => $request->comment
+        ]);
+        return redirect()->route('frontend.video', ['id' => $video->id, '#comments']);
+    }
 }

@@ -53,3 +53,7 @@ Route::post('comments/{id}', 'App\Http\Controllers\HomeController@commentUpdate'
 //     Route::post('comments/{id}/create', 'HomeController@commentStore')->name('front.commentStore');
 //     Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
 // });
+Route::middleware('auth')->group(function () {
+    Route::post('comments/{id}', 'App\Http\Controllers\HomeController@commentUpdate')->name('front.commentUpdate');
+    Route::post('comments/{id}/create', 'App\Http\Controllers\HomeController@commentStore')->name('front.commentStore');
+});

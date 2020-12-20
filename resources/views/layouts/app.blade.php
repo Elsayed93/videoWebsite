@@ -22,6 +22,7 @@
 </head>
 
 <body class="index-page sidebar-collapse">
+            
     <!-- Navbar -->
     @include('layouts.nav')
     <!-- End Navbar -->
