@@ -8,9 +8,9 @@
 <div class="section profile-content" style="margin-top: 190px;"> 
     <div class="container">
       <div class="owner">
-        <div class="avatar">
+        <!-- <div class="avatar">
           <img src="/frontend/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-        </div>
+        </div> -->
         <div class="name">
           <h4 class="title">{{ $user->name }} 
             <br>
