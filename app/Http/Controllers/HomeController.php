@@ -11,13 +11,20 @@ use App\Models\Skill;
 use App\Models\Tag;
 use App\Models\Comments;
 use App\Models\Message;
+use App\Models\Page;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     //
     public function index()
     {
-        $videos = Video::with('skills', 'tags', 'cat', 'user', 'comments.user')->orderBy('id', 'desc')->paginate(30);
+        $videos = Video::with('skills', 'tags', 'cat', 'user', 'comments.user')->orderBy('id', 'desc');
+        if(request()->has('search') && request()->get('search') != '')
+        {
+            $videos = $videos->where('name', 'like', '%'.request()->get('search').'%');
+        }
+        $videos = $videos->paginate(30);
         return view('home', compact('videos'));
     }
 
@@ -78,5 +85,15 @@ class HomeController extends Controller
         $comments_Count = Comments::count();
         $tags_Count = Tag::count();
         return view('welcome', compact('videos', 'videos_Count', 'comments_Count', 'tags_Count'));
+    }
+    public function page($id, $slug = null)
+    {
+        $page = Page::findOrFail($id);
+        return view('front-end.page.index', compact('page'));
+    }
+    public function profile($id, $slug = null)
+    {
+        $user = User::findOrFail($id);
+        return view('front-end.profile.index', compact('user'));
     }
 }

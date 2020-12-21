@@ -20,3 +20,9 @@ function getYoutubeId($url)
         return null;
     }
 }
+
+function slug(string $name)
+{
+   return strtolower(trim(str_replace(' ','_', $name))) ;
+}
+

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,8 +47,8 @@ Route::get('/', 'App\Http\Controllers\HomeController@welcome')->name('frontend.l
 // Route::get('video/{id}', 'HomeController@video')->name('frontend.video');
 // Route::get('contact-us', 'HomeController@messageStore')->name('contact.store');
 // Route::get('/', 'HomeController@welcome')->name('frontend.landing');
-// Route::get('page/{id}/{slug?}', 'HomeController@page')->name('front.page');
-// Route::get('profile/{id}/{slug?}', 'HomeController@profile')->name('front.profile');
+Route::get('page/{id}/{slug?}', 'App\Http\Controllers\HomeController@page')->name('front.page');
+Route::get('profile/{id}/{slug?}', 'App\Http\Controllers\HomeController@profile')->name('front.profile');
 
 // Route::middleware('auth')->group(function () {
 //     Route::post('comments/{id}', 'HomeController@commentUpdate')->name('front.commentUpdate');
