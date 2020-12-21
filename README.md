@@ -59,3 +59,11 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
+---
+## Screen shots from project.
+
+![latest-videos](https://user-images.githubusercontent.com/66916174/102794734-74f01f00-43b4-11eb-97b3-a2dd011caa9d.jpg)
+
+---
+
+![video2](https://user-images.githubusercontent.com/66916174/102794899-b08ae900-43b4-11eb-9293-611994573b71.jpg)
