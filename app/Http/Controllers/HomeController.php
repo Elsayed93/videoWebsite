@@ -16,13 +16,20 @@ use App\Models\User;
 
 class HomeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only([
+            'commentUpdate', 'commentStore', 'profileUpdate'
+        ]);
+    }
+
     //
     public function index()
     {
         $videos = Video::with('skills', 'tags', 'cat', 'user', 'comments.user')->orderBy('id', 'desc');
-        if(request()->has('search') && request()->get('search') != '')
-        {
-            $videos = $videos->where('name', 'like', '%'.request()->get('search').'%');
+        if (request()->has('search') && request()->get('search') != '') {
+            $videos = $videos->where('name', 'like', '%' . request()->get('search') . '%');
         }
         $videos = $videos->paginate(30);
         return view('home', compact('videos'));

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top bg-danger " color-on-scroll="300">
+<nav class="navbar navbar-expand-lg fixed-top bg-danger " >
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="{{ route('frontend.landing') }}" rel="tooltip" title="Coded by Creative Tim"
@@ -60,6 +60,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                        
                             <div class="mt-3 space-y-1">
+                            
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

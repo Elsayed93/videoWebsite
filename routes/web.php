@@ -43,18 +43,11 @@ Route::get('video/{id}', 'App\Http\Controllers\HomeController@video')->name('fro
 Route::get('contact-us', 'App\Http\Controllers\HomeController@messageStore')->name('contact.store');
 Route::get('/', 'App\Http\Controllers\HomeController@welcome')->name('frontend.landing');
 
-// Route::get('tag/{id}', 'HomeController@tags')->name('front.tags');
-// Route::get('video/{id}', 'HomeController@video')->name('frontend.video');
-// Route::get('contact-us', 'HomeController@messageStore')->name('contact.store');
-// Route::get('/', 'HomeController@welcome')->name('frontend.landing');
+
 Route::get('page/{id}/{slug?}', 'App\Http\Controllers\HomeController@page')->name('front.page');
 Route::get('profile/{id}/{slug?}', 'App\Http\Controllers\HomeController@profile')->name('front.profile');
 
-// Route::middleware('auth')->group(function () {
-//     Route::post('comments/{id}', 'HomeController@commentUpdate')->name('front.commentUpdate');
-//     Route::post('comments/{id}/create', 'HomeController@commentStore')->name('front.commentStore');
-//     Route::post('profile', 'HomeController@profileUpdate')->name('profile.update');
-// });
+
 Route::middleware('auth')->group(function () {
     Route::post('comments/{id}', 'App\Http\Controllers\HomeController@commentUpdate')->name('front.commentUpdate');
     Route::post('comments/{id}/create', 'App\Http\Controllers\HomeController@commentStore')->name('front.commentStore');
