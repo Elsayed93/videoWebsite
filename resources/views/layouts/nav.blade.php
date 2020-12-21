@@ -57,9 +57,14 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
+                    
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                        
                             <div class="mt-3 space-y-1">
+                    <a href="{{ route('front.profile',  Auth::user()->id) }}"
+                         style="color: black !important;">
+                        My Profile
+                    </a>
                             
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
