@@ -6,7 +6,7 @@
           <div class="col-md-4">
             <div class="card card-profile card-plain">
               <div class="card-body">
-                <a href="#paper-kit">
+                <a href="#">
                   <div class="author">
                     <h2 class="card-title">{{ $videos_Count }}</h2>
                     <h4 class="card-category">Videos</h4>
@@ -18,7 +18,7 @@
            <div class="col-md-4">
             <div class="card card-profile card-plain">
               <div class="card-body">
-                <a href="#paper-kit">
+                <a href="#">
                   <div class="author">
                     <h2 class="card-title">{{ $comments_Count }}</h2>
                     <h4 class="card-category">Comments</h4>
@@ -30,7 +30,7 @@
            <div class="col-md-4">
             <div class="card card-profile card-plain">
               <div class="card-body">
-                <a href="#paper-kit">
+                <a href="#">
                   <div class="author">
                     <h2 class="card-title">{{ $tags_Count }}</h2>
                     <h4 class="card-category">Tags</h4>

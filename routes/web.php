@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dashboard', function () {
-    return view('welcome');
+    return redirect()->route('home');
 })->middleware(['auth'])->name('dashboard');
 
 Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('admin')->group(function () {
