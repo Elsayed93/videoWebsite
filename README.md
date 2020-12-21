@@ -67,3 +67,10 @@ php artisan db:seed
 ---
 
 ![video2](https://user-images.githubusercontent.com/66916174/102794899-b08ae900-43b4-11eb-9293-611994573b71.jpg)
+
+---
+
+### WE HOPE A NICE DAY FOR YOU 
+### ENJOY
+### THANK YOU
+### ITI STUDENT TEAM
