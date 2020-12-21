@@ -12,7 +12,7 @@ The project was built by Laravel web Framework.
 ### 1.Make Clone 
 
 ```
-git clone [Project-url]
+git clone https://github.com/Elsayed93/videoWebsite.git
 ```
 
 ### 2.Install Composer Dependencies
