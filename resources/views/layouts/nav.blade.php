@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top bg-danger " >
+<nav class="navbar navbar-expand-lg fixed-top bg-dark " >
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="{{ route('frontend.landing') }}" rel="tooltip" title="Coded by Creative Tim"

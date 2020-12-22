@@ -16,7 +16,7 @@
                     <script>
                         document.write(new Date().getFullYear())
 
-                    </script>, made with <i class="fa fa-heart heart"></i> by ITI Team
+                    </script>, made with <i class="fa fa-heart "></i> by ITI Team
                 </span>
             </div>
         </div>

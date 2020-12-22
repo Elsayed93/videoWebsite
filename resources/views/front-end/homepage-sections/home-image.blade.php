@@ -1,5 +1,5 @@
     {{-- start of Header --}}
-    <div class="page-header section-dark" style="background-image: url('/frontend/img/federico-beccari.jpg')">
+    <div class="page-header section-dark" style="background-image: url('/frontend/img/coding.jpg')">
         <div class="filter"></div>
         <div class="content-center">
             <div class="container">

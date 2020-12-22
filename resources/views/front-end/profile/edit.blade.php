@@ -54,7 +54,7 @@
                     @enderror
                 
                 </div>
-                <button type="submit" class="btn btn-info btn-round" style="margin-left:480px;">Update Profile</button>
+                <button type="submit" class="btn btn-dark btn-round" style="margin-left:480px;">Update Profile</button>
                 <div class="clearfix"></div>
     </div>
 

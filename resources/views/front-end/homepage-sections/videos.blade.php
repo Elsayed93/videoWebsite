@@ -11,7 +11,7 @@
         <br>
         <br>
         <div class="text-center">
-            <a href="{{ route('home') }}" class="btn btn-danger btn-round">More Videos</a>
+            <a href="{{ route('home') }}" class="btn btn-dark btn-round">More Videos</a>
         </div>
         </div>
       </div>
