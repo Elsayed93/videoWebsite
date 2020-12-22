@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FrontEnd\Comments\Store;
 use App\Http\Requests\FrontEnd\Messages\Store as MessagesStore;
+use App\Http\Requests\FrontEnd\Users\Store as UsersStore;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Video;
@@ -13,6 +14,10 @@ use App\Models\Comments;
 use App\Models\Message;
 use App\Models\Page;
 use App\Models\User;
+
+use Illuminate\Support\Facades\Hash;
+
+ 
 
 class HomeController extends Controller
 {
@@ -24,7 +29,6 @@ class HomeController extends Controller
         ]);
     }
 
-    //
     public function index()
     {
         $videos = Video::with('skills', 'tags', 'cat', 'user', 'comments.user')->orderBy('id', 'desc');
@@ -102,5 +106,31 @@ class HomeController extends Controller
     {
         $user = User::findOrFail($id);
         return view('front-end.profile.index', compact('user'));
+    }
+    public function profileUpdate(UsersStore $request){
+        $user = User::findOrFail(auth()->user()->id);
+        $array = [];
+        if($request->email != $user->email)
+        {
+            $email = User::where('email', $request->email)->first();
+            if($email == null)
+            {
+                $array['email'] = $request->email;
+            }
+            
+        }
+        if($request->name != $user->name)
+        {
+            $array['name'] = $request->name;
+        }
+        if($request->password != '')
+        {
+            $array['password'] = Hash::make($request->password);
+        }
+        if(!empty($array))
+        {
+            $user->update($array);
+        }
+        return redirect()->route('front.profile', ['id' => $user->id, 'slug'=>slug($user->name)]);
     }
 }
