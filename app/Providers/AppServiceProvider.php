@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         view()->share('categories', Category::all());
         view()->share('skills', Skill::all());
-        view()->share('page', Page::all());
+        view()->share('pages', Page::all());
 
         
     }

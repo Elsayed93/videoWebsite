@@ -3,7 +3,7 @@
         <div class="row">
             <nav class="footer-nav">
                 <ul>
-                   @foreach($page as $page)
+                   @foreach($pages as $page)
                         <li> 
                             <a href="{{ route('front.page', ['id'=> $page->id, 'slug'=>slug($page->name)]) }}" >{{ $page->name }}</a>
                         </li>

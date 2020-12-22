@@ -3,11 +3,10 @@
    <h4 style="margin-top: 10px; margin-bottom:5px;">Update Profile</h4>
   </div>
   <div class="card-body">
-  <form action="{{route('profile.update')}}" method="POST">
-@csrf  
+  <form action="{{route('profile.update')}}" method="POST"> {{-- --}}
+  @csrf  
     <div class="row" >
-
-
+        
                 <div class="form-group col-md-12" >
                 
                     @php $input = 'name'; @endphp

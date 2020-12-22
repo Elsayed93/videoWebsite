@@ -35,7 +35,7 @@ Route::namespace('App\Http\Controllers\BackEnd')->prefix('admin')->middleware('a
 });
 require __DIR__ . '/auth.php';
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');//
 Route::get('category/{id}', 'App\Http\Controllers\HomeController@category')->name('front.category');
 Route::get('skill/{id}', 'App\Http\Controllers\HomeController@skills')->name('front.skill');
 Route::get('tag/{id}', 'App\Http\Controllers\HomeController@tags')->name('front.tags');
@@ -44,11 +44,11 @@ Route::get('contact-us', 'App\Http\Controllers\HomeController@messageStore')->na
 Route::get('/', 'App\Http\Controllers\HomeController@welcome')->name('frontend.landing');
 
 Route::get('page/{id}/{slug?}', 'App\Http\Controllers\HomeController@page')->name('front.page');
-Route::get('profile/{id}/{slug?}', 'App\Http\Controllers\HomeController@profile')->name('front.profile');
+Route::get('profile/{id}/{slug?}', 'App\Http\Controllers\HomeController@profile')->name('front.profile'); //
 
 
 Route::middleware('auth')->group(function () {
     Route::post('comments/{id}', 'App\Http\Controllers\HomeController@commentUpdate')->name('front.commentUpdate');
     Route::post('comments/{id}/create', 'App\Http\Controllers\HomeController@commentStore')->name('front.commentStore');
-    Route::post('/profile', 'App\Http\Controllers\HomeController@profileUpdate')->name('profile.update');
+    Route::post('/profile', 'App\Http\Controllers\HomeController@profileUpdate')->name('profile.update'); //
 });
